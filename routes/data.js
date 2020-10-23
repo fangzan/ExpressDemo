@@ -1,5 +1,4 @@
 var express = require('express');
-var DB = require('../modules/db.js');//数据库操作
 var router = express.Router();
 var fs = require('fs');
 var PATH = './public/data/';
@@ -131,44 +130,19 @@ router.post('/login', function(req, res, next){
     //TODO ：对用户名、密码进行校验
     //xss处理、判空
 
-    //1.获取数据
-    //2.连接数据库查询数据
-    DB.find('user',{
-        username:username,
-        password:password
-    },function(err,data){
-        if(data.length>0){
-            console.log('登录成功');
-            //保存用户信息
-            req.session.userinfo=data[0];
-            // res.redirect('/product');  /*登录成功跳转到商品列表*/
-            return res.send({
-                status: 1
-            });
-        }else{
-            console.log('登录失败');
-            return res.send({
-                status: 0,
-                info: '登录失败'
-            });
-            
-            // res.send("<script>alert('登录失败');location.href='/login'</script>");
-        }
-    })
+    //密码加密 md5(md5(password + '随机字符串'))
+    //密码需要加密－> 可以写入JSON文件
+    if(username === 'admin' && password === '123456'){
+        res.cookie('user',username);
+        return res.send({
+            status: 1
+        });
+    }
 
-    // //密码加密 md5(md5(password + '随机字符串'))
-    // //密码需要加密－> 可以写入JSON文件
-    // if(username === 'admin' && password === '123456'){
-    //     res.cookie('user',username);
-    //     return res.send({
-    //         status: 1
-    //     });
-    // }
-
-    // return res.send({
-    //     status: 0,
-    //     info: '登录失败'
-    // });
+    return res.send({
+        status: 0,
+        info: '登录失败'
+    });
 });
 
 //guid

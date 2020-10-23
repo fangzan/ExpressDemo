@@ -13,8 +13,9 @@ var app = express();
 
 // 设置views路径和模板
 app.set('views', path.join(__dirname, 'views'));
+app.engine( '.html',  require( 'ejs').renderFile);
 // 设置模板引擎
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 
 // app.use配置
 // uncomment after placing your favicon in /public
