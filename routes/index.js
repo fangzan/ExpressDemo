@@ -21,6 +21,55 @@ router.get('/login', function(req, res, next) {
   res.render('l1/login', { title: '登录' });
 });
 
+router.get('/member-statistics', function(req, res, next) {
+  res.render('h1/member-statistics', { title: '会员统计' });
+});
+
+router.get('/member-list', function(req, res, next) {
+  res.render('h1/member-list', { title: '会员(静态)列表' });
+});
+
+router.get('/member-list1', function(req, res, next) {
+  res.render('h1/member-list1', { title: '会员(动态)列表' });
+});
+
+router.get('/member-del', function(req, res, next) {
+  res.render('h1/member-del', { title: '会员删除' });
+});
+
+router.get('/member-add', function(req, res, next) {
+  res.render('h1/member-add', { title: '会员添加' });
+});
+
+router.get('/member-edit', function(req, res, next) {
+  res.render('h1/member-edit', { title: '会员编辑' });
+});
+
+router.get('/member-password', function(req, res, next) {
+  res.render('h1/member-password', { title: '会员编辑' });
+});
+
+router.get('/order-list', function(req, res, next) {
+  res.render('o1/order-list', { title: '订单列表' });
+});
+
+router.get('/order-list1', function(req, res, next) {
+  res.render('o1/order-list1', { title: '订单列表1' });
+});
+
+router.get('/order-add', function(req, res, next) {
+  res.render('o1/order-add', { title: '添加订单' });
+});
+
+router.get('/multi-category', function(req, res, next) {
+  res.render('f1/multi-category', { title: '多级分类' });
+});
+
+
+router.get('/main', function(req, res, next) {
+  res.render('main', { title: '主界面' });
+});
+
 // router.get('/tuijian', function(req, res, next) {
 //   if(!req.cookies.user){
 //     return res.render('login',{});
